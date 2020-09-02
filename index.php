@@ -52,20 +52,21 @@
 							<div class="col-md-4 col-sm-4 no-pad">
 								<select class="selectpicker border-right">
 								  <option>Country</option>
-								  <option>0 Year</option>
-								  <option>1 Year</option>
-								  <option>2 Year</option>
-								  <option>3 Year</option>
+								  <option>United States of America</option>
+								  <option>United Kingdom</option>
+								  <option>Italy</option>
+								  <option>Germany</option>
+								  <option>France</option>
 								</select>
 							</div>
 							<div class="col-md-3 col-sm-3 no-pad">
 								<select class="selectpicker border-right">
 								  <option>Region</option>
-								  <option>0 Year</option>
-								  <option>1 Year</option>
-								  <option>2 Year</option>
-								  <option>3 Year</option>
-								  <option>4 Year</option>
+								  <option>Newyork</option>
+								  <option>London</option>
+								  <option>OxfordShire</option>
+								  <option>Paris</option>
+								  <option>Rome</option>
 								</select>
 							</div>
 							<div class="col-md-3 col-sm-3 no-pad">
@@ -90,7 +91,7 @@
 					<div class="features-content">
 						<a href="#">
 							<img src="img/newyork.jpg" alt="Amazing places in Newyork" class="img-responsive">
-							<p class="font-weight-bold">Amazing Places in Newyork, USA</p>
+							<p class="font-weight-bold" style="font-size: 1.0em; font-weight: bold;">Amazing Places in Newyork, USA</p>
 						</a>
 					</div>
 				</div>
@@ -99,7 +100,7 @@
 					<div class="features-content">
 						<a href="#">
 							<img src="img/London.jpg" alt="Amazing places in Newyork" class="img-responsive">
-							<p class="font-weight-bold">Amazing Places in London, United Kingdom</p>
+							<p class="font-weight-bold" style="font-size: 1.0em; font-weight: bold;">Amazing Places in London, United Kingdom</p>
 						</a>
 					</div>
 				</div>
@@ -108,7 +109,7 @@
 					<div class="features-content">
 						<a href="#">
 							<img src="img/Rome.jpg" alt="Amazing places in Newyork" class="img-responsive">
-							<p class="font-weight-bold">Amazing Places in Rome, Italy</p>
+							<p class="font-weight-bold" style="font-size: 1.0em; font-weight: bold;">Amazing Places in Rome, Italy</p>
 						</a>
 					</div>
 				</div>
@@ -117,7 +118,7 @@
 					<div class="features-content">
 						<a href="#">
 							<img src="img/Germany.jpg" alt="Amazing places in Newyork" class="img-responsive">
-							<p class="font-weight-bold">Amazing Places in FrankFurt, Germany</p>
+							<p class="font-weight-bold" style="font-size: 1.0em; font-weight: bold;">Amazing Places in FrankFurt, Germany</p>
 						</a>
 					</div>
 				</div>
@@ -125,7 +126,7 @@
 					<div class="features-content">
 						<a href="#">
 							<img src="img/Paris.jpg" alt="Amazing places in Newyork" class="img-responsive">
-							<p class="font-weight-bold">Amazing Places in Paris, France</p>
+							<p class="font-weight-bold" style="font-size: 1.0em; font-weight: bold;">Amazing Places in Paris, France</p>
 						</a>
 					</div>
 				</div>
@@ -134,7 +135,7 @@
 					<div class="features-content">
 						<a href="#">
 							<img src="img/Belgium.jpg" alt="Amazing places in Newyork" class="img-responsive">
-							<p class="font-weight-bold">Amazing Places in Brussels, Belgium</p>
+							<p class="font-weight-bold" style="font-size: 1.0em; font-weight: bold;">Amazing Places in Brussels, Belgium</p>
 						</a>
 					</div>
 				</div>
@@ -148,24 +149,24 @@
 						<div id="testimonial-slider" class="owl-carousel">
 							<div class="testimonial">
 								<div class="pic">
-									<img src="img/client-1.jpg" alt="">
+									<img src="./img/mary_jane.jpg" alt="">
 								</div>
 								<p class="description">
-									" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi eligendi facilis itaque minus non odio, quaerat ullam unde voluptatum? "
+									"from swimming to get obsidian to talks on board of our wonderful gulet, from ever-changing and filled with surprises meals offered on board to culinary experiences on the shore. Rome is definitely a point of interest for me "
 								</p>
-								<h3 class="testimonial-title">williamson</h3>
-								<span class="post">Web Developer</span>
+								<h3 class="testimonial-title">Mary Jane</h3>
+								<span class="post">Newyork, USA</span>
 							</div>
 
 							<div class="testimonial">
 								<div class="pic">
-									<img src="img/client-2.jpg" alt="">
+									<img src="img/mike_kesley.jpg" alt="">
 								</div>
 								<p class="description">
-									" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi eligendi facilis itaque minus non odio, quaerat ullam unde voluptatum? "
+									" This was our fourth trip to rome and it lived up to our very high expectations. It was a wonderfully organized trip with beautiful cruising and swimming spots, great hikes, and fascinating lectures on the region and history. "
 								</p>
-								<h3 class="testimonial-title">kristiana</h3>
-								<span class="post">Web Designer</span>
+								<h3 class="testimonial-title">Mike Kesley</h3>
+								<span class="post">Rome, Italy</span>
 							</div>
 							
 							<div class="testimonial">
@@ -173,21 +174,20 @@
 									<img src="img/client-3.jpg" alt="">
 								</div>
 								<p class="description">
-									" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi eligendi facilis itaque minus non odio, quaerat ullam unde voluptatum? "
+									" My experience, a week-long tour of Frankfurt, was superb. We saw not only the usual tourist sites, but several that were certainly off the beaten track. Best of the best"
 								</p>
-								<h3 class="testimonial-title">kristiana</h3>
-								<span class="post">Web Designer</span>
+								<h3 class="testimonial-title">Mary Kane</h3>
+								<span class="post">Frankfurt, Germany</span>
 							</div>
-							
 							<div class="testimonial">
 								<div class="pic">
 									<img src="img/client-4.jpg" alt="">
 								</div>
 								<p class="description">
-									" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi eligendi facilis itaque minus non odio, quaerat ullam unde voluptatum? "
+									" My wife and I have done many tours with a variety of tour companies. Travel to London is definitely the best."
 								</p>
-								<h3 class="testimonial-title">kristiana</h3>
-								<span class="post">Web Designer</span>
+								<h3 class="testimonial-title">Iryna Shayk</h3>
+								<span class="post">London, United Kingdom</span>
 							</div>
 						</div>
 					</div>
