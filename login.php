@@ -51,7 +51,6 @@
 						<div style="font-weight: bolder; font-size: 1.8em;">PointOfInterest</div><br/>
 						<input type="text" class="form-control input-lg" placeholder="User Name">
 						<input type="password" class="form-control input-lg" placeholder="Password">
-						<label><a href="">Forget Password?</a></label>
 						<button type="submit" class="btn btn-primary">Login</button>
 						<p>Have't Any Account <a href="Register.php">Create An Account</a></p>
 					</form>
