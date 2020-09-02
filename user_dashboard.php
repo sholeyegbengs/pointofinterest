@@ -12,8 +12,7 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bbootstrap 4 -->
   <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+
   <!-- JQVMap -->
   <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
@@ -21,12 +20,9 @@
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  
+
   <!-- Bootstrap -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -61,7 +57,7 @@
 	  <!-- Small modal -->
     </ul>
   </nav>
-  
+
   <!-- /.navbar -->
 			<!-- Modal -->
 			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -180,7 +176,7 @@
               <a href="#place-list" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-         
+
 
           <!-- ./col -->
         </div>
@@ -212,51 +208,19 @@
                   <!-- Morris chart - Sales -->
                   <div class="chart tab-pane active" id="add-place"
                        style="position: relative; height: 800px;">
-					   <form>
+					   <form id="add_places_form">
 							<div class="form-group">
-								<label for="exampleFormControlInput1">Name</label>
-								<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Name of the Place">
-							</div>
-							<div class="form-group">
-								<label for="exampleFormControlSelect2">Type</label>
-								<select class="form-control" id="exampleFormControlSelect2">
-								<option>City</option>
-								<option>Town</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label for="exampleFormControlSelect2">Country</label>
-								<select  class="form-control" id="exampleFormControlSelect2">
-								<option>USA</option>
-								<option>France</option>
-								<option>Germany</option>
-								<option>Italy</option>
-								<option>United Kingdom</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label for="exampleFormControlSelect2">Region</label>
-								<select class="form-control" id="exampleFormControlSelect2">
-								<option>Newyork</option>
-								<option>Rome</option>
-								<option>Oxfordshire</option>
-								<option>Paris</option>
-								<option>FrankFurt</option>
-								</select>
+								<label for="exampleFormControlInput1">Search Point of Interest</label>
+								<input type="text" class="form-control"
+                                       id="search_input" placeholder="Search Point of Interest">
 							</div>
 							<div class="form-group">
 								<label for="exampleFormControlTextarea1">Description</label>
-								<textarea class="form-control" id="exampleFormControlTextarea1" rows="7"></textarea>
+								<textarea required minlength="10" class="form-control" id="exampleFormControlTextarea1" rows="7"></textarea>
 							</div>
-							<div class="form-group">
-								<label for="exampleFormControlInput1">Add Image</label>
-								<input type="file" class="form-control" id="exampleFormControlInput1" >
-							</div>
+
 							<Button class="btn btn-primary form-control">Add</Button>
-							</form>                      
+							</form>
                    </div>
                   <div class="chart tab-pane" id="place-list" style="position: relative; height: 300px;">
 				  <table class="table table-responsive">
@@ -286,8 +250,8 @@
 						</tr>
 
 					</tbody>
-					</table>                      
-                  </div>  
+					</table>
+                  </div>
                 </div>
               </div><!-- /.card-body -->
             </div>
@@ -295,7 +259,7 @@
             <!-- /.card -->
           </section>
           <!-- /.Left col -->
-         
+
         </div>
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
@@ -326,9 +290,7 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
-<!-- Sparkline -->
+<!-- ChartJS --><!-- Sparkline -->
 <script src="plugins/sparklines/sparkline.js"></script>
 <!-- JQVMap -->
 <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
@@ -350,5 +312,8 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyB6sHzPYSC5je3CLYxidlb0kn28PI6O7BE&libraries=places"
+></script>
+<script src="js/inner_main.js"></script>
 </body>
 </html>

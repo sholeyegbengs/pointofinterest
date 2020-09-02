@@ -6,140 +6,123 @@
         <title>POI | Point of Interest</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		
-        <!-- All Plugin Css --> 
-		<link rel="stylesheet" href="css/plugins.css">
-		
-		<!-- Style & Common Css --> 
+        <!-- All Plugin Css -->
+        <link rel="stylesheet" href="css/plugins.css">
+
+        <!-- Style & Common Css -->
 		<link rel="stylesheet" href="css/common.css">
         <link rel="stylesheet" href="css/main.css">
+        <style>
+            .loader-demo-box{
+                height: 100vh;
+                width: 100%;
+                position: fixed;
+                z-index: 999999999999999;
+                border: none !important;
+                background-color: rgba(0,0,0,0.6);
+            }
 
+            .loader-demo-box.hide{
+                display: none !important;
+            }
+            .circle-loader:before{
+                border-top-color: #da0833;
+            }
+
+            .circle-loader:after{
+                border: 10px solid  grey;
+            }
+        </style>
     </head>
-	
+
     <body>
-	
-		<!-- Navigation Start  -->
+
+    <div id="full-loader" class="loader-demo-box hide">
+        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+    </div>
+    <!-- Navigation Start  -->
 		<nav class="navbar navbar-default navbar-sticky bootsnav">
 
-			<div class="container">      
+			<div class="container">
 				<!-- Start Header Navigation -->
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
 						<i class="fa fa-bars"></i>
 					</button>
-					<a class="navbar-brand" href="index.html">POI</a>
+					<a class="navbar-brand" href="index.php">POI</a>
 				</div>
 				<!-- End Header Navigation -->
 
 				<!-- Nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-							<li><a href="index.html">Home</a></li> 
+							<li><a href="index.php">Home</a></li>
 							<li><a href="login.php">Add Places</a></li>
 						</ul>
 				</div><!-- /.navbar-collapse -->
-			</div>   
+			</div>
 		</nav>
-		<!-- Navigation End  -->
-		
+
+
 		<!-- Main jumbotron for a primary marketing message or call to action -->
 		<section class="main-banner" style="background:#242c36 url(img/background-picture.jpg) no-repeat">
 			<div class="container">
 				<div class="caption">
 					<h2>Visit Amazing places</h2>
-					<form>
-						<fieldset>
-							<div class="col-md-4 col-sm-4 no-pad">
-								<select class="selectpicker border-right">
-								  <option>Country</option>
-								  <option>United States of America</option>
-								  <option>United Kingdom</option>
-								  <option>Italy</option>
-								  <option>Germany</option>
-								  <option>France</option>
-								</select>
-							</div>
-							<div class="col-md-3 col-sm-3 no-pad">
-								<select class="selectpicker border-right">
-								  <option>Region</option>
-								  <option>Newyork</option>
-								  <option>London</option>
-								  <option>OxfordShire</option>
-								  <option>Paris</option>
-								  <option>Rome</option>
-								</select>
-							</div>
-							<div class="col-md-3 col-sm-3 no-pad">
-								<select class="selectpicker">
-								  <option>Type</option>
-								  <option>Town</option>
-								  <option>City</option>
-								</select>
-							</div>
-							<div class="col-md-2 col-sm-2 no-pad">
-								<input type="submit" class="btn seub-btn" value="Search" />
-							</div>
-						</fieldset>
-					</form>
+					<div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <form id="search-place">
+                                <fieldset>
+
+                                    <div class="col-md-10 no-pad">
+                                        <input type="text" class="form-control" id="search_input"
+                                               placeholder="Search for your Places of Interest">
+                                    </div>
+                                    <div class="col-md-2 col-sm-2 no-pad">
+                                        <input type="submit" class="btn seub-btn" value="Search" />
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
 				</div>
 			</div>
 		</section>
-		
-		<section class="features">
+    <div class="modal fade" id="details" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="poi_name">New message</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="control-label">Place Description:</label>
+                          <p id="poi_description">
+
+                          </p>
+                        </div>
+                        <hr/>
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">User Reviews:</label>
+                           <ul id="poi_reviews" class="reviews">
+                               <li><span class="glyphicon glyphicon-comment"></span> sit amet, consectetur adipiscing elit. Morbi scelerisque efficitur</li>
+                           </ul>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <section class="features">
 			<div class="container">
-				<div class="col-md-4 col-sm-4">
-					<div class="features-content">
-						<a href="#">
-							<img src="img/newyork.jpg" alt="Amazing places in Newyork" class="img-responsive">
-							<p class="font-weight-bold" style="font-size: 1.0em; font-weight: bold;">Amazing Places in Newyork, USA</p>
-						</a>
-					</div>
-				</div>
-				
-				<div class="col-md-4 col-sm-4">
-					<div class="features-content">
-						<a href="#">
-							<img src="img/London.jpg" alt="Amazing places in Newyork" class="img-responsive">
-							<p class="font-weight-bold" style="font-size: 1.0em; font-weight: bold;">Amazing Places in London, United Kingdom</p>
-						</a>
-					</div>
-				</div>
-				
-				<div class="col-md-4 col-sm-4">
-					<div class="features-content">
-						<a href="#">
-							<img src="img/Rome.jpg" alt="Amazing places in Newyork" class="img-responsive">
-							<p class="font-weight-bold" style="font-size: 1.0em; font-weight: bold;">Amazing Places in Rome, Italy</p>
-						</a>
-					</div>
-				</div>
-				
-				<div class="col-md-4 col-sm-4">
-					<div class="features-content">
-						<a href="#">
-							<img src="img/Germany.jpg" alt="Amazing places in Newyork" class="img-responsive">
-							<p class="font-weight-bold" style="font-size: 1.0em; font-weight: bold;">Amazing Places in FrankFurt, Germany</p>
-						</a>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-4">
-					<div class="features-content">
-						<a href="#">
-							<img src="img/Paris.jpg" alt="Amazing places in Newyork" class="img-responsive">
-							<p class="font-weight-bold" style="font-size: 1.0em; font-weight: bold;">Amazing Places in Paris, France</p>
-						</a>
-					</div>
-				</div>
-				
-				<div class="col-md-4 col-sm-4">
-					<div class="features-content">
-						<a href="#">
-							<img src="img/Belgium.jpg" alt="Amazing places in Newyork" class="img-responsive">
-							<p class="font-weight-bold" style="font-size: 1.0em; font-weight: bold;">Amazing Places in Brussels, Belgium</p>
-						</a>
-					</div>
-				</div>
-			
+                <div class="col-12">
+                    <div id="map" style="height: 400px; width: 100%"></div>
+                </div>
 			</div>
 		</section>
 		<section class="testimonials dark">
@@ -168,7 +151,7 @@
 								<h3 class="testimonial-title">Mike Kesley</h3>
 								<span class="post">Rome, Italy</span>
 							</div>
-							
+
 							<div class="testimonial">
 								<div class="pic">
 									<img src="img/client-3.jpg" alt="">
@@ -194,16 +177,21 @@
 				</div>
 			</div>
 		</section>
-		
-		
-		
-			
-		
-		 
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/owl.carousel.min.js"></script>
+
+        <script src="./js/jquery.min.js">
+        </script>
+        <script  src="./js/popper.min.js">
+
+        </script>
+        <script src="js/bootstrap.min.js">
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyB6sHzPYSC5je3CLYxidlb0kn28PI6O7BE&libraries=places"
+        ></script>
+		<script type="text/javascript" src="js/owl.carousel.min.js">
+        </script>
 		<script src="js/bootsnav.js"></script>
 		<script src="js/main.js"></script>
+		<script src="js/index.js"></script>
+
     </body>
 </html>
