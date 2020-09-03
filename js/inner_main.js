@@ -158,6 +158,16 @@ $("#add-poi-form").submit(function (e) {
               {
                   alert(`${search_query.name} has been added to Point of Interest`)
                   $('#add-poi-form')[0].reset();
+                  const poi = res.data;
+                  $('#poi-table tbody').prepend(`<tr>
+                    <th scope="row">${poi.name}</th>
+                    <td>${poi.country}</td>
+                    <td>${poi.region}</td>
+                    <td>Town</td>
+                    <td>${poi.lat}</td>
+                    <td>${poi.lon}</td>
+                    <td><a href="javascript:void(0)" data-id="${poi.id}"  class="view-poi-details btn btn-info">View</a></td>
+                    </tr>`);
               }else{
                   if(res.data.message)
                   {

@@ -66,45 +66,5 @@ $("#login-form").submit(function (e) {
 
 });
 
-function getPOIDetails(poi_id) {
-    toggleFullPageLoader(true);
-            $.ajax({
-                url:`details.php?poi_id=${poi_id}`,
-                success:function (data, status, xhr) {
-                    const res = JSON.parse(data);
-                   $('#poi_name').html(res.data.name);
-                   $('#poi_description').html(res.data.description);
-                    $('#poi_reviews').html("");
-                    const reviews = res.data.reviews.map((review)=>{
-                        $('#poi_reviews').append(`<li><span class="glyphicon glyphicon-comment"></span>
-                            ${review.review}</li>
-`)
-                    })
-
-                    $('#details').modal("show");
-                    //const  url  = data.data.intended_url;
-                    //redirectTo(url)
-                },
-                error:function (jqXhr, textStatus, errorMessage) {
-                    const data  = jqXhr.responseJSON;
-                    if(typeof data.errors === "object")
-                    {
-                        Object.keys(data.errors).forEach(function(key){
-                            let selector =  $(`#${key}-error-msg`);
-                            selector.html(data.errors[key][0]);
-                            $(`#${key}`).parent('.form-group').removeClass("has-danger");
-                            selector.fadeIn();
-                        })
-                    }else{
-
-                        $('#email-error-msg').html(data.errors)
-                        $('#email-error-msg').fadeIn();
-                    }
-                },
-                complete:function () {
-                    toggleFullPageLoader(false);
-                }
-            })
-}
 
 
