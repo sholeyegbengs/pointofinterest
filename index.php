@@ -96,7 +96,7 @@
                     <h4 class="modal-title" id="poi_name">New message</h4>
                 </div>
                 <div class="modal-body">
-                    <form>
+
                         <div class="form-group">
                             <label for="recipient-name" class="control-label">Place Description:</label>
                           <p id="poi_description">
@@ -109,8 +109,21 @@
                            <ul id="poi_reviews" class="reviews">
                                <li><span class="glyphicon glyphicon-comment"></span> sit amet, consectetur adipiscing elit. Morbi scelerisque efficitur</li>
                            </ul>
+                            <hr>
+                            <form id="add-review-form">
+                                <input type="hidden" id="poi_id">
+                                <div class="form-group">
+                                    <div class="input-group" style="display: flex; flex-wrap: wrap">
+                                        <input type="text" id="review_input"
+                                               style="flex-grow: 1;width: auto;"
+                                               required class="form-control" placeholder="Enter your comment...">
+                                        <span class="input-group-btn " style="width: auto">
+                                            <button  class="btn btn-success" style="height: 45px;" type="submit">Add Review!</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                    </form>
                 </div>
 
             </div>

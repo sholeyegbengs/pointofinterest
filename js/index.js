@@ -59,7 +59,7 @@ function finalizeMap(center,markers=[]) {
 
     // The map, centered at Uluru
     var map = new google.maps.Map(
-        document.getElementById('map'), {zoom: 4, center: center});
+        document.getElementById('map'), {zoom: 3, center: center});
 
     var infoWindow = new google.maps.InfoWindow;
 
@@ -68,9 +68,9 @@ function finalizeMap(center,markers=[]) {
         console.log(pos);
        var position = new google.maps.Marker({position: pos, map: map,label: marker.name});
         position.addListener('click', function() {
-            infoWindow.setContent(marker.description);
-            infoWindow.open(map, position);
-            alert(marker.id);
+            // infoWindow.setContent(marker.description);
+            // infoWindow.open(map, position);
+
             getPOIDetails(marker.id)
         });
     });
@@ -124,12 +124,55 @@ $("#search-place").submit(function (e) {
     }
 });
 
+$("#add-review-form").submit(function (e) {
+
+    e.preventDefault();
+
+        toggleFullPageLoader(true);
+        const poi_id = $('#poi_id').val();
+        const review = $('#review_input').val();
+        $.ajax({
+            url:`add_review.php`,
+            type:"POST",
+            data:{poi_id,review},
+            success:function (data, status, xhr) {
+                const res = JSON.parse(data);
+                $('#poi_reviews').prepend(`
+                <li><span class="glyphicon glyphicon-comment"></span>
+                            ${review}</li>`);
+                $('#review_input').val("")
+                //const  url  = data.data.intended_url;
+                //redirectTo(url)
+            },
+            error:function (jqXhr, textStatus, errorMessage) {
+                const data  = jqXhr.responseJSON;
+                if(typeof data.errors === "object")
+                {
+                    Object.keys(data.errors).forEach(function(key){
+                        let selector =  $(`#${key}-error-msg`);
+                        selector.html(data.errors[key][0]);
+                        $(`#${key}`).parent('.form-group').removeClass("has-danger");
+                        selector.fadeIn();
+                    })
+                }else{
+
+                    $('#email-error-msg').html(data.errors)
+                    $('#email-error-msg').fadeIn();
+                }
+            },
+            complete:function () {
+                toggleFullPageLoader(false);
+            }
+        })
+});
+
 function getPOIDetails(poi_id) {
     toggleFullPageLoader(true);
             $.ajax({
                 url:`details.php?poi_id=${poi_id}`,
                 success:function (data, status, xhr) {
                     const res = JSON.parse(data);
+                    $('#poi_id').val(res.data.id);
                    $('#poi_name').html(res.data.name);
                    $('#poi_description').html(res.data.description);
                     $('#poi_reviews').html("");

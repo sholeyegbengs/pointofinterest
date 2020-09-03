@@ -2,12 +2,11 @@
 
 if($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header("location: index.php");
-}ob_start();
-    session_start();
+}
 
 
     $curl = curl_init();
-    $url="localhost:8010/api/v1/login";
+    $url="localhost:8010/api/v1/review/create";
     $url = sprintf("%s", $url);
 
     $payload = json_encode($_POST);
@@ -26,12 +25,6 @@ if($_SERVER['REQUEST_METHOD'] !== 'POST') {
         curl_close($curl);
         $data = json_decode($result,true);
 
-        if($httpcode==200)
-        {
-
-            $_SESSION["username"]= $data["username"];
-            $_SESSION["token"] =  $data["token"];
-        }
 
         echo json_encode(["status_code"=>$httpcode,"data"=>$data]);
 
