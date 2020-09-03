@@ -26,6 +26,7 @@ $(document).ready(function () {
 
     google.maps.event.addListener(autocomplete, 'place_changed', function () {
         let near_place = autocomplete.getPlace();
+        console.log(near_place);
 
         let name = near_place.name;
         let types = near_place.types;
@@ -33,7 +34,9 @@ $(document).ready(function () {
             return address_component.types.includes("country");
         });
         let region_array = near_place.address_components.filter(function(address_component){
-            return address_component.types.includes("locality");
+            return address_component.types.includes("locality")
+                ||address_component.types.includes("postal_town")
+                ||address_component.types.includes("political");
         });
         let country = country_array.length ? country_array[0].long_name: "";
         let region = region_array.length ? region_array[0].long_name: "";

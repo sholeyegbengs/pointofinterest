@@ -33,7 +33,9 @@ $(document).ready(function () {
             return address_component.types.includes("country");
         });
         let region_array = near_place.address_components.filter(function(address_component){
-            return address_component.types.includes("locality");
+            return address_component.types.includes("locality")
+                ||address_component.types.includes("postal_town")
+                ||address_component.types.includes("political");
         });
         let country = country_array.length ? country_array[0].long_name: "";
         let region = region_array.length ? region_array[0].long_name: "";
