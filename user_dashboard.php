@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['username']))
+{
+    header("location:login.php");
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,7 +81,13 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Logout</button>
+                    <form id="logout-form" action="logout.php">
+
+                    </form>
+                    <!-- Button trigger modal -->
+                    <a  class="btn btn-primary" href="#" onclick="document.getElementById('logout-form').submit()">
+                        Logout
+                    </a>
 				</div>
 				</div>
 			</div>
@@ -208,46 +221,36 @@
                   <!-- Morris chart - Sales -->
                   <div class="chart tab-pane active" id="add-place"
                        style="position: relative; height: 800px;">
-					   <form id="add_places_form">
+					   <form id="add-poi-form">
 							<div class="form-group">
-								<label for="exampleFormControlInput1">Search Point of Interest</label>
+								<label for="search_input">Search Point of Interest</label>
 								<input type="text" class="form-control"
                                        id="search_input" placeholder="Search Point of Interest">
 							</div>
 							<div class="form-group">
-								<label for="exampleFormControlTextarea1">Description</label>
-								<textarea required minlength="10" class="form-control" id="exampleFormControlTextarea1" rows="7"></textarea>
+								<label for="description">Description</label>
+								<textarea required minlength="10" id="description" class="form-control" rows="7"></textarea>
 							</div>
-
-							<Button class="btn btn-primary form-control">Add</Button>
-							</form>
+							<Button type="submit" class="btn btn-primary form-control">Add</Button>
+                        </form>
                    </div>
-                  <div class="chart tab-pane" id="place-list" style="position: relative; height: 300px;">
-				  <table class="table table-responsive">
+                  <div class="chart tab-pane" id="place-list" style="position: relative;
+                   height: 300px; overflow: scroll">
+				  <table class="table" id="poi-table">
 					<thead>
 						<tr>
-						<th scope="col">Name</th>
-						<th scope="col">Country</th>
-						<th scope="col">Region</th>
-						<th scope="col">Type</th>
-						<th scope="col">Lat</th>
-						<th scope="col">Long</th>
-						<th scope="col">Description</th>
-						<th scope="col">Image</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Country</th>
+                            <th scope="col">Region</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Lat</th>
+                            <th scope="col">Long</th>
+                            <th>View</th>
 
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<th scope="row">Nigara Falls</th>
-							<td>USA</td>
-							<td>Newyork</td>
-							<td>Town</td>
-							<td>...</td>
-							<td>...</td>
-							<td>view</td>
-							<td>vew</td>
-						</tr>
+
 
 					</tbody>
 					</table>
@@ -264,7 +267,37 @@
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
+      <div class="modal fade" id="details" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h4 class="modal-title flex-grow-1" id="poi_name">New message</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                  </div>
+                  <div class="modal-body">
+                      <form>
+                          <div class="form-group">
+                              <label for="recipient-name" class="control-label">Place Description:</label>
+                              <p id="poi_description">
+
+                              </p>
+                          </div>
+                          <hr/>
+                          <div class="form-group">
+                              <label for="message-text" class="control-label">User Reviews:</label>
+                              <ul id="poi_reviews" class="reviews">
+                                  <li><span class="glyphicon glyphicon-comment"></span> sit amet, consectetur adipiscing elit. Morbi scelerisque efficitur</li>
+                              </ul>
+                          </div>
+                      </form>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+
+      <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">

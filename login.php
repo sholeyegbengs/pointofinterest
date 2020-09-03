@@ -47,10 +47,10 @@
 		<section class="login-wrapper">
 			<div class="container">
 				<div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
-					<form>
+					<form id="login-form">
 						<div style="font-weight: bolder; font-size: 1.8em;">PointOfInterest</div><br/>
-						<input type="text" class="form-control input-lg" placeholder="User Name">
-						<input type="password" class="form-control input-lg" placeholder="Password">
+						<input type="text" id="username" required class="form-control input-lg" placeholder="User Name">
+						<input type="password" id="password" required class="form-control input-lg" placeholder="Password">
 						<button type="submit" class="btn btn-primary">Login</button>
 						<p>Have't Any Account <a href="Register.php">Create An Account</a></p>
 					</form>
@@ -63,5 +63,6 @@
 		<script type="text/javascript" src="js/owl.carousel.min.js"></script>
 		<script src="js/bootsnav.js"></script>
 		<script src="js/main.js"></script>
+        <script src="js/login.js"></script>
     </body>
 </html>

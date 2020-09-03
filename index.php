@@ -180,9 +180,7 @@
 
         <script src="./js/jquery.min.js">
         </script>
-        <script  src="./js/popper.min.js">
 
-        </script>
         <script src="js/bootstrap.min.js">
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyB6sHzPYSC5je3CLYxidlb0kn28PI6O7BE&libraries=places"
