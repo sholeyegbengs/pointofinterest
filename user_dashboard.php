@@ -159,40 +159,40 @@ if(!isset($_SESSION['username']))
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-lg-6 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>150</h3>
-
-                <p>Point of Interests</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-earth"></i>
-              </div>
-              <a href="#place-list" class="small-box-footer">View <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-6 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>53</h3>
-
-                <p>Countries</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-ios-location"></i>
-              </div>
-              <a href="#place-list" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-
-
-          <!-- ./col -->
-        </div>
+<!--        <div class="row">-->
+<!--          <div class="col-lg-6 col-6">-->
+<!--            <!-- small box -->-->
+<!--            <div class="small-box bg-info">-->
+<!--              <div class="inner">-->
+<!--                <h3>150</h3>-->
+<!---->
+<!--                <p>Point of Interests</p>-->
+<!--              </div>-->
+<!--              <div class="icon">-->
+<!--                <i class="ion ion-earth"></i>-->
+<!--              </div>-->
+<!--              <a href="#place-list" class="small-box-footer">View <i class="fas fa-arrow-circle-right"></i></a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <!-- ./col -->-->
+<!--          <div class="col-lg-6 col-6">-->
+<!--            <!-- small box -->-->
+<!--            <div class="small-box bg-success">-->
+<!--              <div class="inner">-->
+<!--                <h3>53</h3>-->
+<!---->
+<!--                <p>Countries</p>-->
+<!--              </div>-->
+<!--              <div class="icon">-->
+<!--                <i class="ion ion-ios-location"></i>-->
+<!--              </div>-->
+<!--              <a href="#place-list" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!---->
+<!---->
+<!--
+       </div>-->
         <!-- /.row -->
         <!-- Main row -->
         <div class="row">
@@ -203,57 +203,28 @@ if(!isset($_SESSION['username']))
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  User Tab
+                Point of Interests
                 </h3>
-                <div class="card-tools">
-                  <ul class="nav nav-pills ml-auto">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#add-place" data-toggle="tab">Add Place</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#place-list" data-toggle="tab">Point Of Interest</a>
-                    </li>
-                  </ul>
+                <div class="card-tools" style="width: 500px">
+                    <input type="text" class="form-control" id="search_input" placeholder="Filter by Country or Region">
                 </div>
               </div><!-- /.card-header -->
               <div class="card-body">
                 <div class="tab-content p-0">
                   <!-- Morris chart - Sales -->
-                  <div class="chart tab-pane active" id="add-place"
+                  <div class="chart tab-pane " id="add-place"
                        style="position: relative; height: 800px;">
-					   <form id="add-poi-form">
-							<div class="form-group">
-								<label for="search_input">Search Point of Interest</label>
-								<input type="text" class="form-control"
-                                       id="search_input" placeholder="Search Point of Interest">
-							</div>
-							<div class="form-group">
-								<label for="description">Description</label>
-								<textarea required minlength="10" id="description" class="form-control" rows="7"></textarea>
-							</div>
-							<Button type="submit" class="btn btn-primary form-control">Add</Button>
-                        </form>
+
                    </div>
-                  <div class="chart tab-pane" id="place-list" style="position: relative;
-                   height: 300px; overflow: scroll">
-				  <table class="table" id="poi-table">
-					<thead>
-						<tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Country</th>
-                            <th scope="col">Region</th>
-                            <th scope="col">Type</th>
-                            <th scope="col">Lat</th>
-                            <th scope="col">Long</th>
-                            <th>View</th>
+                  <div class="chart tab-pane active" id="place-list" style="position: relative;
+                   height: 500px; overflow: scroll">
+				    <div class="row">
+                        <div class="col-12">
+                            <div id="map" style="height: 400px; width: 100%">
 
-						</tr>
-					</thead>
-					<tbody>
-
-
-					</tbody>
-					</table>
+                            </div>
+                        </div>
+                    </div>
                   </div>
                 </div>
               </div><!-- /.card-body -->
@@ -290,6 +261,54 @@ if(!isset($_SESSION['username']))
                                   <li><span class="glyphicon glyphicon-comment"></span> sit amet, consectetur adipiscing elit. Morbi scelerisque efficitur</li>
                               </ul>
                           </div>
+                      </form>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+
+      <div class="modal fade" id="add-poi-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h4 class="modal-title flex-grow-1" id="poi_name">New message</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                  </div>
+                  <div class="modal-body">
+                      <form id="add-poi-form">
+                          <div class="form-group">
+                              <label for="search_input">Name</label>
+                              <input type="text" class="form-control"
+                                     id="name" placeholder="Enter POI name">
+                              <input type="hidden" class="form-control"
+                                     id="lat">
+                              <input type="hidden" class="form-control"
+                                     id="lon" >
+                          </div>
+
+                          <div class="form-group">
+                              <label for="search_input">Type</label>
+                              <input required type="text" class="form-control"
+                                     id="type" placeholder="Enter POI name">
+                          </div>
+                          <div class="form-group">
+                              <label for="search_input">Country</label>
+                              <input required type="text" class="form-control"
+                                     id="country" placeholder="Enter POI Country">
+                          </div>
+                          <div class="form-group">
+                              <label for="search_input">Region</label>
+                              <input required type="text" class="form-control"
+                                     id="region" placeholder="Enter POI Region">
+                          </div>
+                          <div class="form-group">
+                              <label for="description">Description</label>
+                              <textarea required minlength="10" id="description"
+                                        class="form-control" rows="3"></textarea>
+                          </div>
+                          <Button type="submit" class="btn btn-primary form-control">Add</Button>
                       </form>
                   </div>
 

@@ -16,7 +16,7 @@ let searchInput = 'search_input';
         $('#full-loader').toggleClass("hide");
     }
 }
-
+var locationLatLng = {};
 let search_query=undefined;
 $(document).ready(function () {
     let autocomplete;
@@ -43,38 +43,49 @@ $(document).ready(function () {
 
         let latitude = near_place.geometry.location.lat();
         let longitude = near_place.geometry.location.lng();
-
+        locationLatLng = {lat:latitude,lon:longitude}
         search_query = {types,name,longitude,latitude,country,region};
     });
-
     initializeMap();
+
 });
 
-function initializeMap(markers=[]) {
+function initializeMap(markers=[],user_location=true) {
     window.navigator.geolocation
         .getCurrentPosition( (position)=> {
             const { latitude, longitude } = position.coords;
             let center = {lat:Number(latitude), lng:Number(longitude)}
-            finalizeMap(center,markers)
+            finalizeMap(center,markers,user_location)
         }, console.log);
 }
-function finalizeMap(center,markers=[]) {
+function finalizeMap(center,markers=[],user_location=true) {
 
     // The map, centered at Uluru
     var map = new google.maps.Map(
-        document.getElementById('map'), {zoom: 3, center: center});
+        document.getElementById('map'), {zoom: 4, center: center});
+
+    if(user_location===false)
+    {
+        let new_center = markers[0];
+        map.setCenter(new google.maps.LatLng(locationLatLng.lat,locationLatLng.lon));
+    }
 
     var infoWindow = new google.maps.InfoWindow;
 
     markers.map((marker)=>{
         let pos = {lat: Number(marker.lat), lng: Number(marker.lon)};
-        console.log(pos);
+
        var position = new google.maps.Marker({position: pos, map: map,label: marker.name});
         position.addListener('click', function() {
-            // infoWindow.setContent(marker.description);
-            // infoWindow.open(map, position);
 
-            getPOIDetails(marker.id)
+            infoWindow.setContent(`<p style="margin-bottom: 10px"><b>${marker.name}</b></p>
+                            <p  style="margin-bottom: 10px"><b>${marker.region},${marker.country}</b></p>
+                             <p  style="margin-bottom: 10px"><b>Location:</b>${marker.lat},${marker.lon}</p>
+                <a  style="color:red" href="javascript:void(0)" onclick="getPOIDetails(${marker.id})"><b>View Details</b></a>`);
+
+            infoWindow.open(map, position);
+
+
         });
     });
 
@@ -100,7 +111,7 @@ $("#search-place").submit(function (e) {
             url:`search.php${query}`,
             success:function (data, status, xhr) {
                 const res = JSON.parse(data);
-                initializeMap(res.data);
+                initializeMap(res.data,false);
                 //const  url  = data.data.intended_url;
                 //redirectTo(url)
             },
